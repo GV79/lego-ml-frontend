@@ -6,7 +6,7 @@ Web application created using React.js and Material-UI for allowing a user to in
 
 ### Images
 
-![Basic FE design](https://github.com/GV79/lego-ml-frontend/blob/master/exampleImage.png)
+![Basic FE design](https://github.com/GV79/lego-ml-frontend/blob/master/exampleImage.PNG)
 
 ### Set Up
 
