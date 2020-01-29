@@ -76,7 +76,9 @@ export default function HomepageBody() {
       <Grid style={{ flexGrow: '1' }}>
         <Search handleChange={handleChange} />
         <Grid className={classes.partsBody} container direction='row' justify='center'>
-          {partData.length > 0 ? (
+          {partData.filter(item => {
+            return item.visible;
+          }).length > 0 ? (
             partData.map((item, key) => {
               return (
                 <Part
