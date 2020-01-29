@@ -9,6 +9,7 @@ import { sendData } from '../utils/utility';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SnackbarFactory from './SnackbarFactory';
 import { MAX_PARTS } from '../configuration/config';
+import { GENERATE_FAIL, GENERATE_SUCCESS } from '../utils/constants.js';
 
 export default function HomepageBody() {
   const classes = useStyles();
@@ -38,9 +39,9 @@ export default function HomepageBody() {
   };
 
   const displaySnackbar = () => {
-    if (generateStatus === 0) {
+    if (generateStatus === GENERATE_FAIL) {
       return <SnackbarFactory type='error' message='Error sending data.' unmount={setGenerateStatus} />;
-    } else if (generateStatus === 1) {
+    } else if (generateStatus === GENERATE_SUCCESS) {
       return <SnackbarFactory type='success' message='Data sent successfully.' unmount={setGenerateStatus} />;
     } else {
       return <></>;
@@ -50,9 +51,9 @@ export default function HomepageBody() {
   const handleSendData = () => {
     try {
       sendData(partState.current);
-      setGenerateStatus(1);
+      setGenerateStatus(GENERATE_SUCCESS);
     } catch (err) {
-      setGenerateStatus(0);
+      setGenerateStatus(GENERATE_FAIL);
     }
   };
 
