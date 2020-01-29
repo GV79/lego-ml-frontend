@@ -1,15 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Grid } from '@material-ui/core';
-import Part from './Part';
-import Button from '@material-ui/core/Button';
+import { Button, Grid } from '@material-ui/core';
 import BuildIcon from '@material-ui/icons/Build';
-import useStyles from './HomepageBodyStyles';
-import data from '../resources/exampleData';
-import { sendData } from '../utils/utility';
+import Part from './Part';
 import Search from './Search';
 import SnackbarFactory from './SnackbarFactory';
+import { sendData } from '../utils/utility';
 import { MAX_PARTS } from '../configuration/config';
 import { GENERATE_FAIL, GENERATE_SUCCESS } from '../utils/constants.js';
+import data from '../resources/exampleData';
+import useStyles from './HomepageBodyStyles';
 
 // TO DO: Mobile media queries
 export default function HomepageBody() {
@@ -20,10 +19,12 @@ export default function HomepageBody() {
   const partState = useRef([]); // [{ id: '', num: 0 }]
 
   useEffect(() => {
-    for (let item of partData) {
+    for (let item of data) {
       partState.current = [...partState.current, { id: item.partId, num: 0 }];
     }
-  }, [partData]);
+
+    new Image().src = '/empty.svg';
+  }, []);
 
   const handleMaximumParts = () => {
     if (partState.current.length > 0) {
@@ -59,17 +60,22 @@ export default function HomepageBody() {
   };
 
   const handleChange = event => {
-    let dataSubset = data.filter(item => {
-      return item.partName.toLowerCase().includes(event.target.value.toLowerCase());
+    let partDataFiltered = data.map(item => {
+      if (item.partName.toLowerCase().includes(event.target.value.toLowerCase())) {
+        item.visible = true;
+      } else {
+        item.visible = false;
+      }
+      return item;
     });
-    setPartData(dataSubset);
+    setPartData(partDataFiltered);
   };
 
   return (
     <>
       <Grid style={{ flexGrow: '1' }}>
         <Search handleChange={handleChange} />
-        <Grid className={classes.partsBody} container direction='row' justify='space-around'>
+        <Grid className={classes.partsBody} container direction='row' justify='center'>
           {partData.length > 0 ? (
             partData.map((item, key) => {
               return (
@@ -86,17 +92,12 @@ export default function HomepageBody() {
           ) : (
             <Grid container direction='column' justify='center' align='center'>
               <h3 style={{ color: '#ab8787' }}>No data found</h3>
-              <img src='/empty.svg' alt='no data found' style={{ width: '40%', maxWidth: '30rem', height: 'auto' }} />
+              <img src='/empty.svg' alt='no data found' className={classes.searchEmpty} />
             </Grid>
           )}
         </Grid>
         <div style={{ bottom: 0, position: 'fixed', right: 0 }}>
-          <Button
-            variant='contained'
-            color='secondary'
-            style={{ margin: '1rem', marginLeft: 'auto', width: '12rem' }}
-            onClick={handleSendData}
-          >
+          <Button variant='contained' color='secondary' className={classes.generateButton} onClick={handleSendData}>
             Generate <BuildIcon style={{ padding: '0.5rem 0rem 0.5rem 1rem' }} />
           </Button>
         </div>

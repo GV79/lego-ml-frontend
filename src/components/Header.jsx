@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import styles from './HeaderStyles';
-import InfoIcon from '@material-ui/icons/Info';
 import AboutModal from './AboutModal';
+import InfoIcon from '@material-ui/icons/Info';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import styles from './HeaderStyles';
 
 export default function Header() {
   const [showAboutModal, setShowAboutModal] = useState(false);

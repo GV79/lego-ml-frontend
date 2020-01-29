@@ -17,7 +17,13 @@ export default function Part({ data, partState, enabled, handleMaximumParts }) {
   }, [data, partState, count, handleMaximumParts]);
 
   return (
-    <Grid container direction='column' justify='center' alignItems='center' style={{ width: 'auto' }}>
+    <Grid
+      container
+      direction='column'
+      justify='center'
+      alignItems='center'
+      style={{ display: data.visible ? 'block' : 'none', width: 'auto' }}
+    >
       <Card className={classes.card}>
         <CardContent>
           <Typography variant='h5' component='h2'>

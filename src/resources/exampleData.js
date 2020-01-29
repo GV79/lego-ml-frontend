@@ -6,6 +6,7 @@ export const backendJSON = [
     dimensionUnitless: '2 x 2 x 1',
     dimensionUnits: '1.6cm x 1.6cm x 1.1cm',
     color: 'black',
+    visible: true,
   },
   {
     partId: '2',
@@ -14,6 +15,7 @@ export const backendJSON = [
     dimensionUnitless: '2 x 4 x 1',
     dimensionUnits: '1.6cm x 3.2cm x 1.1cm',
     color: 'white',
+    visible: true,
   },
   {
     partId: '3',
@@ -22,6 +24,7 @@ export const backendJSON = [
     dimensionUnitless: '2 x 3 x 1',
     dimensionUnits: '1.6cm x 2.4cm x 1.1cm',
     color: 'black',
+    visible: true,
   },
   {
     partId: '4',
@@ -30,6 +33,7 @@ export const backendJSON = [
     dimensionUnitless: '1 x 2 x 1',
     dimensionUnits: '0.8cm x 1.6cm x 1.1cm',
     color: 'white',
+    visible: true,
   },
   {
     partId: '5',
@@ -38,6 +42,7 @@ export const backendJSON = [
     dimensionUnitless: '2 x 2 x 1',
     dimensionUnits: '1.6cm x 1.6cm x 1.1cm',
     color: 'black',
+    visible: true,
   },
   {
     partId: '6',
@@ -46,6 +51,7 @@ export const backendJSON = [
     dimensionUnitless: '2 x 4 x 1',
     dimensionUnits: '1.6cm x 3.2cm x 1.1cm',
     color: 'white',
+    visible: true,
   },
   {
     partId: '7',
@@ -54,6 +60,7 @@ export const backendJSON = [
     dimensionUnitless: '2 x 3 x 1',
     dimensionUnits: '1.6cm x 2.4cm x 1.1cm',
     color: 'black',
+    visible: true,
   },
   {
     partId: '8',
@@ -62,6 +69,7 @@ export const backendJSON = [
     dimensionUnitless: '1 x 2 x 1',
     dimensionUnits: '0.8cm x 1.6cm x 1.1cm',
     color: 'white',
+    visible: true,
   },
   {
     partId: '9',
@@ -70,6 +78,7 @@ export const backendJSON = [
     dimensionUnitless: '2 x 2 x 1',
     dimensionUnits: '1.6cm x 1.6cm x 1.1cm',
     color: 'black',
+    visible: true,
   },
   {
     partId: '10',
@@ -78,6 +87,7 @@ export const backendJSON = [
     dimensionUnitless: '2 x 4 x 1',
     dimensionUnits: '1.6cm x 3.2cm x 1.1cm',
     color: 'white',
+    visible: true,
   },
 ];
 
