@@ -1,16 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Grid, FormControl, FormControlLabel, FormLabel, TextField, Radio, RadioGroup } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Part from './Part';
 import Button from '@material-ui/core/Button';
 import BuildIcon from '@material-ui/icons/Build';
 import useStyles from './HomepageBodyStyles';
 import data from '../resources/exampleData';
 import { sendData } from '../utils/utility';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import Search from './Search';
 import SnackbarFactory from './SnackbarFactory';
 import { MAX_PARTS } from '../configuration/config';
 import { GENERATE_FAIL, GENERATE_SUCCESS } from '../utils/constants.js';
 
+// TO DO: Mobile media queries
 export default function HomepageBody() {
   const classes = useStyles();
   const [partData, setPartData] = useState(data);
@@ -59,7 +60,7 @@ export default function HomepageBody() {
 
   const handleChange = event => {
     let dataSubset = data.filter(item => {
-      return item.partName.includes(event.target.value);
+      return item.partName.toLowerCase().includes(event.target.value.toLowerCase());
     });
     setPartData(dataSubset);
   };
@@ -67,37 +68,27 @@ export default function HomepageBody() {
   return (
     <>
       <Grid style={{ flexGrow: '1' }}>
-        <Grid className={classes.searchBody} container alignItems='center'>
-          {/* <FormControl component='fieldset' className={classes.formControl}> */}
-          {/* <FormLabel component='legend'>Filter Lego parts</FormLabel> */}
-          <h2 className={classes.searchTitle}>Filter Lego Parts</h2>
-          {/* <RadioGroup aria-label='Search by' name='searchBy' value={value} onChange={handleChange}>
-              <FormControlLabel value='name' control={<Radio />} label='part name' />
-              <FormControlLabel value='id' control={<Radio />} label='part number' />
-            </RadioGroup> */}
-          {/* </FormControl> */}
-          <TextField
-            id='outlined-search'
-            label='Search by name...'
-            type='search'
-            variant='outlined'
-            onChange={handleChange}
-          />
-          <FilterListIcon style={{ margin: '1rem', cursor: 'pointer' }} />
-        </Grid>
+        <Search handleChange={handleChange} />
         <Grid className={classes.partsBody} container direction='row' justify='space-around'>
-          {partData.map((item, key) => {
-            return (
-              <Part
-                style={{ marginTop: '2rem' }}
-                data={item}
-                key={key}
-                partState={partState}
-                enabled={partCountEnabled}
-                handleMaximumParts={handleMaximumParts}
-              />
-            );
-          })}
+          {partData.length > 0 ? (
+            partData.map((item, key) => {
+              return (
+                <Part
+                  style={{ marginTop: '2rem' }}
+                  data={item}
+                  key={key}
+                  partState={partState}
+                  enabled={partCountEnabled}
+                  handleMaximumParts={handleMaximumParts}
+                />
+              );
+            })
+          ) : (
+            <Grid container direction='column' justify='center' align='center'>
+              <h3 style={{ color: '#ab8787' }}>No data found</h3>
+              <img src='/empty.svg' alt='no data found' style={{ width: '40%', maxWidth: '30rem', height: 'auto' }} />
+            </Grid>
+          )}
         </Grid>
         <div style={{ bottom: 0, position: 'fixed', right: 0 }}>
           <Button
