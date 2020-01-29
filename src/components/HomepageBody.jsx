@@ -23,7 +23,7 @@ export default function HomepageBody() {
       partState.current = [...partState.current, { id: item.partId, num: 0 }];
     }
 
-    new Image().src = '/empty.svg';
+    new Image().src = 'images/empty.svg';
   }, []);
 
   const handleMaximumParts = () => {
@@ -92,7 +92,7 @@ export default function HomepageBody() {
           ) : (
             <Grid container direction='column' justify='center' align='center'>
               <h3 style={{ color: '#ab8787' }}>No data found</h3>
-              <img src='/empty.svg' alt='no data found' className={classes.searchEmpty} />
+              <img src='images/empty.svg' alt='no data found' className={classes.searchEmpty} />
             </Grid>
           )}
         </Grid>
