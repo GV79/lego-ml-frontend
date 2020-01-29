@@ -1,34 +1,21 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import PartCounter from './PartCounter';
+import React, { useState, useEffect } from 'react';
+import { Grid, Card, CardContent, Typography } from '@material-ui/core';
+import PartTotal from './PartTotal';
+import useStyles from './PartStyles';
 
-const useStyles = makeStyles({
-  card: {
-    textAlign: 'center',
-    minWidth: 275,
-    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-    margin: '2rem 2rem 0 2rem',
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  image: {
-    maxWidth: '5rem',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
-export default function Part({ data }) {
-  const [count, setCount] = React.useState(0);
+export default function Part({ data, partState, enabled, handleMaximumParts }) {
+  const [count, setCount] = useState(0);
   const classes = useStyles();
+
+  useEffect(() => {
+    for (let item of partState.current) {
+      if (item.id === data.partId) {
+        item.num = count;
+      }
+    }
+    handleMaximumParts();
+  }, [data, partState, count, handleMaximumParts]);
+
   return (
     <Grid container direction='column' justify='center' alignItems='center' style={{ width: 'auto' }}>
       <Card className={classes.card}>
@@ -43,11 +30,11 @@ export default function Part({ data }) {
         </CardContent>
         {/* <CardActions>
           <Button size='small' style={{ marginLeft: 'auto', color: '#24a3d4' }}>
-            GET DIMENSIONS
+            <a href={data.link}>INFO</a>
           </Button>
         </CardActions> */}
       </Card>
-      <PartCounter count={count} setCount={setCount} />
+      <PartTotal count={count} setCount={setCount} enabled={enabled} />
     </Grid>
   );
 }

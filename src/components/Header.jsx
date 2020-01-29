@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import styles from './HeaderStyles';
 import InfoIcon from '@material-ui/icons/Info';
 import AboutModal from './AboutModal';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 export default function Header() {
   const [showAboutModal, setShowAboutModal] = useState(false);
 
   const displayModal = () => {
     setShowAboutModal(true);
+  };
+
+  const handleLink = () => {
+    window.open('https://github.com/GV79/lego-ml-frontend', '_newtab');
   };
 
   return (
@@ -18,6 +23,7 @@ export default function Header() {
         </div>
         <div style={styles.about}>
           <InfoIcon style={{ fontSize: '2.5rem' }} onClick={displayModal} />
+          <GitHubIcon style={{ marginLeft: '0.3rem', fontSize: '2rem' }} onClick={handleLink} />
         </div>
       </div>
       {showAboutModal ? <AboutModal setShowAboutModal={setShowAboutModal} /> : null}

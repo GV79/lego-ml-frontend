@@ -5,6 +5,7 @@ import axios from 'axios';
  */
 
 export const sendData = async data => {
+  console.log(data);
   /*
     // when backend is setup, send HTTP request
     try {

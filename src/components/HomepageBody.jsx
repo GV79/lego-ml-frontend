@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Grid, FormControl, FormControlLabel, FormLabel, TextField, Radio, RadioGroup } from '@material-ui/core';
 import Part from './Part';
 import Button from '@material-ui/core/Button';
@@ -8,14 +8,34 @@ import data from '../resources/exampleData';
 import { sendData } from '../utils/utility';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SnackbarFactory from './SnackbarFactory';
+import { MAX_PARTS } from '../configuration/config';
 
 export default function HomepageBody() {
   const classes = useStyles();
-  const [partState, setPartState] = useState({});
   const [partData, setPartData] = useState(data);
+  const [partCountEnabled, setPartCountEnabled] = useState(true);
   const [generateStatus, setGenerateStatus] = useState(null);
+  const partState = useRef([]); // [{ id: '', num: 0 }]
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    for (let item of partData) {
+      partState.current = [...partState.current, { id: item.partId, num: 0 }];
+    }
+  }, [partData]);
+
+  const handleMaximumParts = () => {
+    if (partState.current.length > 0) {
+      let totalParts = partState.current.reduce((total, item) => {
+        return total + item.num;
+      }, 0);
+
+      if (totalParts >= MAX_PARTS) {
+        setPartCountEnabled(false);
+      } else {
+        if (!partCountEnabled) setPartCountEnabled(true);
+      }
+    }
+  };
 
   const displaySnackbar = () => {
     if (generateStatus === 0) {
@@ -29,7 +49,7 @@ export default function HomepageBody() {
 
   const handleSendData = () => {
     try {
-      sendData();
+      sendData(partState.current);
       setGenerateStatus(1);
     } catch (err) {
       setGenerateStatus(0);
@@ -66,7 +86,16 @@ export default function HomepageBody() {
         </Grid>
         <Grid className={classes.partsBody} container direction='row' justify='space-around'>
           {partData.map((item, key) => {
-            return <Part style={{ marginTop: '2rem' }} data={item} key={key} />;
+            return (
+              <Part
+                style={{ marginTop: '2rem' }}
+                data={item}
+                key={key}
+                partState={partState}
+                enabled={partCountEnabled}
+                handleMaximumParts={handleMaximumParts}
+              />
+            );
           })}
         </Grid>
         <div style={{ bottom: 0, position: 'fixed', right: 0 }}>

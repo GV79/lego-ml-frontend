@@ -11,7 +11,8 @@ export const styles = {
   },
   about: {
     display: 'flex',
-    margin: '-2rem -0.5rem 0 auto',
+    alignItems: 'center',
+    margin: '-2rem -1rem 0 auto',
     color: '#e6e6e6',
     cursor: 'pointer',
   },

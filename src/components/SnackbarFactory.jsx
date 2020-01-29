@@ -2,11 +2,12 @@ import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
-function Alert(props) {
+const Alert = props => {
   return <MuiAlert elevation={6} variant='filled' {...props} />;
-}
+};
 
 /*
+ * Component that takes in 3 parameters and generates a snackbar at the bottom
  * type: 'error', 'success'... etc.
  * message: 'message to be displayed to user'
  * unmount: function to unmount component from DOM

@@ -32,7 +32,7 @@ export const backendJSON = [
     color: 'white',
   },
   {
-    partId: '1',
+    partId: '5',
     partName: 'LEGO Brick 2 x 2',
     partImage: 'https://img.brickowl.com/files/image_cache/large/lego-brick-2-x-2-3003-6223-35275-30.jpg',
     dimensionUnitless: '2 x 2 x 1',
@@ -40,7 +40,7 @@ export const backendJSON = [
     color: 'black',
   },
   {
-    partId: '2',
+    partId: '6',
     partName: 'LEGO Brick 2 x 4',
     partImage: 'https://img.brickowl.com/files/image_cache/large/lego-brick-2-x-4-3001-15589-54534-30-771344.jpg',
     dimensionUnitless: '2 x 4 x 1',
@@ -48,7 +48,7 @@ export const backendJSON = [
     color: 'white',
   },
   {
-    partId: '3',
+    partId: '7',
     partName: 'LEGO Brick 2 x 3',
     partImage: 'https://img.brickowl.com/files/image_cache/large/lego-brick-2-x-3-3002-30-462227.jpg',
     dimensionUnitless: '2 x 3 x 1',
@@ -56,7 +56,7 @@ export const backendJSON = [
     color: 'black',
   },
   {
-    partId: '4',
+    partId: '8',
     partName: 'LEGO Brick 1 x 2',
     partImage: 'https://img.brickowl.com/files/image_cache/large/lego-brick-1-x-2-3004-93792-30.jpg',
     dimensionUnitless: '1 x 2 x 1',
@@ -64,7 +64,7 @@ export const backendJSON = [
     color: 'white',
   },
   {
-    partId: '1',
+    partId: '9',
     partName: 'LEGO Brick 2 x 2',
     partImage: 'https://img.brickowl.com/files/image_cache/large/lego-brick-2-x-2-3003-6223-35275-30.jpg',
     dimensionUnitless: '2 x 2 x 1',
@@ -72,7 +72,7 @@ export const backendJSON = [
     color: 'black',
   },
   {
-    partId: '2',
+    partId: '10',
     partName: 'LEGO Brick 2 x 4',
     partImage: 'https://img.brickowl.com/files/image_cache/large/lego-brick-2-x-4-3001-15589-54534-30-771344.jpg',
     dimensionUnitless: '2 x 4 x 1',

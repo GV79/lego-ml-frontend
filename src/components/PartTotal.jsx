@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function PartCounter({ count, setCount }) {
+export default function PartTotal({ count, setCount, enabled }) {
   const classes = useStyles();
 
   return (
@@ -35,6 +35,7 @@ export default function PartCounter({ count, setCount }) {
             onClick={() => {
               setCount(count + 1);
             }}
+            disabled={enabled ? false : true}
           >
             <AddIcon fontSize='small' />
           </Button>
