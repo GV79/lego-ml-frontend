@@ -76,27 +76,26 @@ export default function HomepageBody() {
       <Grid style={{ flexGrow: '1' }}>
         <Search handleChange={handleChange} />
         <Grid className={classes.partsBody} container direction='row' justify='center'>
+          {partData.map((item, key) => {
+            return (
+              <Part
+                style={{ marginTop: '2rem' }}
+                data={item}
+                key={key}
+                partState={partState}
+                enabled={partCountEnabled}
+                handleMaximumParts={handleMaximumParts}
+              />
+            );
+          })}
           {partData.filter(item => {
             return item.visible;
-          }).length > 0 ? (
-            partData.map((item, key) => {
-              return (
-                <Part
-                  style={{ marginTop: '2rem' }}
-                  data={item}
-                  key={key}
-                  partState={partState}
-                  enabled={partCountEnabled}
-                  handleMaximumParts={handleMaximumParts}
-                />
-              );
-            })
-          ) : (
+          }).length === 0 ? (
             <Grid container direction='column' justify='center' align='center'>
               <h3 style={{ color: '#ab8787' }}>No data found</h3>
               <img src='images/empty.svg' alt='no data found' className={classes.searchEmpty} />
             </Grid>
-          )}
+          ) : null}
         </Grid>
         <div style={{ bottom: 0, position: 'fixed', right: 0 }}>
           <Button variant='contained' color='secondary' className={classes.generateButton} onClick={handleSendData}>
