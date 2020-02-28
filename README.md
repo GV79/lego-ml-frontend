@@ -3,7 +3,7 @@
 ### Background
 
 Web application created using React.js and Material-UI for allowing a user to input pieces into the RL environment (for demo purposes).
-Deployed using Netlify and 'npm run build' on https://wizardly-wright-3e4b68.netlify.com/. Maximum parts limited to 10.
+Deployed using Netlify and 'npm run build' on https://wizardly-wright-3e4b68.netlify.com/. Maximum parts limited to 10. Currently not connected to a backend server yet.
 
 ### Images
 
