@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { set } from '../actions';
 import { Button, Grid } from '@material-ui/core';
 import BuildIcon from '@material-ui/icons/Build';
 import Part from './Part';
@@ -13,7 +15,8 @@ import useStyles from './HomepageBodyStyles';
 // TO DO: Mobile media queries
 export default function HomepageBody() {
   const classes = useStyles();
-  const [partData, setPartData] = useState(data);
+  const dispatch = useDispatch();
+  const partData = useSelector(state => state.part);
   const [partCountEnabled, setPartCountEnabled] = useState(true);
   const [generateStatus, setGenerateStatus] = useState(null);
   const partState = useRef([]); // [{ id: '', num: 0 }]
@@ -50,9 +53,9 @@ export default function HomepageBody() {
     }
   };
 
-  const handleSendData = () => {
+  const handleSendData = async () => {
     try {
-      sendData(partState.current);
+      await sendData(partState.current);
       setGenerateStatus(GENERATE_SUCCESS);
     } catch (err) {
       setGenerateStatus(GENERATE_FAIL);
@@ -68,7 +71,7 @@ export default function HomepageBody() {
       }
       return item;
     });
-    setPartData(partDataFiltered);
+    dispatch(set(partDataFiltered));
   };
 
   return (

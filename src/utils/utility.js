@@ -2,14 +2,22 @@
  * REST calls
  */
 
-import axios from 'axios';
+// import axios from 'axios';
 
 /*
  * Function for sending user chosen Lego Part Data to server
  * ie. [{ id: '1', num: 6 }, { id: '2', num: 4 }]
  */
 const sendData = async data => {
-  console.log(data);
+  try {
+    console.log(data);
+    await new Promise((resolve, reject) => {
+      reject('Endpoint not set up yet.');
+    });
+  } catch (err) {
+    throw err;
+  }
+
   /*
     // when backend is setup, send HTTP request
     try {

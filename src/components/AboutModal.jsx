@@ -3,7 +3,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 
 export default function AboutModal({ setShowAboutModal }) {
   const handleClose = () => {
-    setShowAboutModal(false);
+    setShowAboutModal();
   };
 
   return (
